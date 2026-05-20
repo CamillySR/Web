@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camilly Ramos — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f0e8;
+      --ink: #1a1a1a;
+      --accent: #2d5a3d;
+      --accent-light: #4a8c62;
+      --muted: #6b6b6b;
+      --card-bg: #fffdf7;
+      --border: #d4c9b0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* HEADER */
+    header {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 32px 60px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 32px;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .header-text h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .header-text h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .header-text p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 480px;
+    }
+
+    .badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      white-space: nowrap;
+      align-self: start;
+      margin-top: 8px;
+    }
+
+    /* NAV */
+    nav {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 20px 32px;
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    /* MAIN */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 32px 100px;
+    }
+
+    section { margin-bottom: 72px; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ABOUT */
+    #about {
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    #about p {
+      font-size: 1.1rem;
+      color: var(--ink);
+      max-width: 620px;
+      margin-bottom: 16px;
+    }
+
+    /* SKILLS */
+    #skills { animation: fadeUp 0.7s 0.3s ease both; }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 0.88rem;
+      color: var(--ink);
+      background: var(--card-bg);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .skill-tag.learning {
+      border-style: dashed;
+      color: var(--muted);
+    }
+
+    .skills-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* PROJECTS */
+    #projects { animation: fadeUp 0.7s 0.4s ease both; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      text-decoration: none;
+      color: var(--ink);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      display: block;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(45, 90, 61, 0.1);
+      border-color: var(--accent-light);
+    }
+
+    .project-card .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .project-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+
+    .project-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .project-card .arrow {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* CONTACT */
+    #contact { animation: fadeUp 0.7s 0.5s ease both; }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.95rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 18px;
+      background: var(--card-bg);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header { grid-template-columns: 1fr; }
+      .badge { align-self: auto; width: fit-content; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-text">
+      <h1>Camilly <em>Ramos</em></h1>
+      <p>Computer Science student passionate about web development and technology. Building things from scratch and learning every day.</p>
+    </div>
+    <span class="badge">Open to opportunities</span>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+
+    <section id="about">
+      <div class="section-label">About me</div>
+      <p>
+        I'm a Computer Science student currently developing my foundation in web technologies.
+        I enjoy turning ideas into real, functional projects — even if they're small — and I'm always
+        looking for opportunities to grow alongside people who care about quality and innovation.
+      </p>
+      <p>
+        I learn by doing: I explore tutorials, apply concepts in my own way, and document what I build.
+        Right now, I'm deepening my knowledge in HTML, CSS, Python, and SQL, with a focus on web development.
+      </p>
+    </section>
+
+    <section id="skills">
+      <div class="section-label">Technologies</div>
+      <div class="skills-grid">
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">Git & GitHub</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag learning">JavaScript ✦ learning</span>
+        <span class="skill-tag learning">React ✦ learning</span>
+      </div>
+      <p class="skills-note">✦ Currently studying</p>
+    </section>
+
+    <section id="projects">
+      <div class="section-label">Practice Projects</div>
+      <div class="projects-grid">
+
+        <a class="project-card" href="login.html">
+          <div class="tag">HTML · CSS</div>
+          <h3>Login Page</h3>
+          <p>Responsive login form with Flexbox layout, form validation, and icon integration via Boxicons.</p>
+          <span class="arrow">View →</span>
+        </a>
+
+        <a class="project-card" href="index3.html">
+          <div class="tag">HTML · CSS</div>
+          <h3>Product Page</h3>
+          <p>A structured page with header navigation, product display, and footer — practicing semantic HTML layout.</p>
+          <span class="arrow">View →</span>
+        </a>
+
+        <a class="project-card" href="forms.html">
+          <div class="tag">HTML</div>
+          <h3>Form Elements</h3>
+          <p>Exploration of HTML form inputs: text, password, email, phone, date, and number with basic validation.</p>
+          <span class="arrow">View →</span>
+        </a>
+
+        <a class="project-card" href="audios.html">
+          <div class="tag">HTML · Media</div>
+          <h3>Audio Player</h3>
+          <p>Custom audio player page using the HTML5 audio element with album art and external links.</p>
+          <span class="arrow">View →</span>
+        </a>
+
+        <a class="project-card" href="tables.html">
+          <div class="tag">HTML · CSS</div>
+          <h3>Styled Table</h3>
+          <p>Weekly schedule built with HTML tables, exploring styling with borders, colors, and alignment.</p>
+          <span class="arrow">View →</span>
+        </a>
+
+        <a class="project-card" href="index4.html">
+          <div class="tag">CSS</div>
+          <h3>Box Model & Float</h3>
+          <p>Hands-on practice with the CSS box model, float layout, and element sizing.</p>
+          <span class="arrow">View →</span>
+        </a>
+
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-label">Get in touch</div>
+      <div class="contact-links">
+        <a class="contact-link" href="https://github.com/CamillySR" target="_blank">
+          ⌥ GitHub
+        </a>
+        <a class="contact-link" href="mailto:Ssrpaz@gmail.com">
+          ✉ Email
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>© 2025 Camilly Ramos</span>
+    <span>Built with HTML & CSS</span>
+  </footer>
+
+</body>
+</html>
